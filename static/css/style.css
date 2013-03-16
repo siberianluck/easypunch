@@ -1,0 +1,49 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+}
+
+.punch, .form-signin {
+    margin: 0 auto 20px;
+    max-width: 300px;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+#dateOverride{
+    display: none;
+    padding-top: 40px;
+}
+
+table, td.sum, th.sum{
+    border: 2px solid black;
+}
+
+.tableCont{
+    width: 80%;
+}
+
+.inline-label{
+    display: inline;
+    padding-left: 20px;
+}
+
+.employeeName{
+    font-size: 18px;
+}
+
+.flash{
+    width: 50%;
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media print
+  {
+    .admin {display: none;}
+    .accessCode {display: none;}
+  }

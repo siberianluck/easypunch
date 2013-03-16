@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="alert flash">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    <div class="container">
+
+      <form action = "auth" method="post" class="form-signin">
+        <h2 class="form-signin-heading">Please Provide Your Access Code </h2>
+        <input type="password" name="accessCode" class="input-block-level" placeholder="Access Code">
+        <button class="btn btn-large btn-primary" type="submit">Get Punching.</button>
+      </form>
+
+    </div> <!-- /container -->
+{% endblock %}

@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<form class="admin" action="" method="post">
+    <label class="inline-label" for="startDate">Start Date</label>
+    <input type="text" name="startDate" class="datepicker">
+    <label class="inline-label" for="endDate">End Date</label>
+    <input type="text" name="endDate" class="datepicker">
+    <br />
+    <button class="btn" type="submit">Update Report Range</button>
+</form>
+{% for employee in employees %}
+<div class="employeeName" id="e_{{ employee['employeeId'] }}"><p>{{ employee['employeeName'] }}</p></div>
+<div class="accessCode" id="a_{{ employee['employeeId'] }}"><p>{{ employee['accessCode'] }}</p></div>
+<div class="tableCont">
+    <table class="table table-striped">
+        <thead> 
+            <tr> 
+                <th>Date</th>
+                <th>Time In</th>
+                <th>Time Out</th>
+                <th class="sum">Hours</th>
+            </tr>
+        </thead>
+    {% for time in cards[employee['employeeId']] %}
+        <tr>
+            <td>{{time['date']}}</td>
+            <td>{{time['punchIn']}}</td>
+            <td>{{time['punchOut']}}</td>
+            <td class="sum">{{time['hours']}}</td>
+        </tr>
+    {% endfor %}
+        <tr> 
+            <td class="sum" colspan=3><strong>Total Hours:</strong></td>
+            <td class="sum" >{{hoursSum[employee['employeeId']]}}</td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+<form class="admin" action="new_emp" method="post">
+    <label class="inline-label" for="empName">Employee Name</label>
+    <input type="text" name="empName">
+    <label class="inline-label" for="empAccess">Access Code</label>
+    <input type="text" name="empAccess">
+    <br />
+    <button class="btn" type="submit">Add Employee</button>
+</form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="alert flash">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    <div class="container">
+      <form class="punch" action = "punch" method="post">
+        <h2>Hi {{name}}</h2>
+        <button class="btn btn-large btn-primary" type="submit">Punch {{ punch_type }}!</button>
+        <br />
+        <a id="forgot" href="#">I forgot...</a>
+        <br />
+        <div id="dateOverride">
+            <label for="date">Date</label>
+            <input name="date" type="text" class="datepicker" disabled />
+            <label for="time">Time</label>
+            <input name="time" type="text" class="timepicker" disabled />
+        </div>
+      </form>
+
+    </div> <!-- /container -->
+{% endblock %}
